@@ -22,7 +22,6 @@ $(document).ready(function(){
     }
     if(besoinDeCliquer){$("a[href='#"+cible+"']").click();}
     besoinDeCliquer = true;
-    MathJax.Hub.Queue(["Typeset",MathJax.Hub,"contenu"]);    
     });
   
   $(".adresse").mouseenter(function(){
@@ -76,6 +75,7 @@ $(document).ready(function(){
                                          $(this).attr("data-adresse"),
                                          $(this).attr("data-domaine"));
         });
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub,"contenu"]);
       });
     besoinDeCliquer = false;
     document.location.hash = cible;
