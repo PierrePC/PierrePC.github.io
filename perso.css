@@ -54,6 +54,7 @@ color: white;
 #mini-menu
 {
 text-align: center;
+padding: 0px;
 }
 
 #mini-menu ul
@@ -67,6 +68,11 @@ list-style-type: none;
 {
 height: 40px;
 transition: 0.2s;
+}
+
+#mini-menu .mini-title
+{
+height: 30px
 }
 
 .mini-onglet
@@ -94,9 +100,9 @@ text-decoration: none;
 color: #202020;
 }
 
-.mini-contenu
+#contenu
 {
-display: none;
+padding: 0px 15px 0px 30px;
 }
 
 .deroulable .details
@@ -107,7 +113,7 @@ display: none;
 .corps
 {
 margin: 30px 0px 30px;
-padding:0px;
+padding: 0px;
 font-size: 16px;
 }
 
@@ -116,9 +122,10 @@ font-size: 16px;
 border-style: none;
 font-family: 'Source Sans Pro';
 font-weight: 400;
+padding: 0px;
 }
 
-h2,h3
+h1,h2,h3
 {
 font-family:'Raleway';
 }
