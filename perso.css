@@ -142,12 +142,13 @@ font-weight: 700;
 text-indent:30px;
 }
 
-.logo
+#logo
 {
-text-align: center;
-float: left;
+display: flex;
+align-items: center;
+justify-content: center;
 width: 100%;
-height: 100%;
+height: 70px;
 padding: 0px 15px 0px;
 margin-bottom: 25px;
 }
@@ -177,6 +178,11 @@ cursor: pointer;
 .glyphicon-rond:hover
 {
 background-color: #202020;
+}
+
+#footer
+{
+padding-bottom: 60px;
 }
 
 .deroulable .accroche

@@ -1,14 +1,17 @@
-var ur1 = "univ-rennes1.fr"
-var nd = "nd.edu"
+const ur1 = "univ-rennes1.fr"
+const nd = "nd.edu"
+
+var logo = ""
 
 function emailfromdata(nom,adresse,domaine){
   return nom + " <" + adresse + "@" + domaine + ">";
   }
 
 function changerInfo(texte){
-  $("#info").fadeOut(100,function(){
-    $("#info").html(texte);
-    $("#info").fadeIn(100);});
+  $("#logo").fadeOut(100,function(){
+    logo = (logo === "") ? $("#logo").html() : logo;
+    $("#logo").html(texte);
+    $("#logo").fadeIn(100);});
   }
 
 $(document).ready(function(){
@@ -30,14 +33,14 @@ $(document).ready(function(){
     });
 
   $(".telephone").mouseenter(function(){
-    changerInfo("+1 (574) 634-6438");
+    changerInfo("+1 (574) 631-6438");
     });
   $(".telephone").click(function(){
-    alert("+1 (574) 634-6438");
+    alert("+1 (574) 631-6438");
     });
   
   $(".glyphicon-rond").mouseleave(function(){
-    changerInfo("");
+    changerInfo(logo);
     });
   
   MathJax.Hub.Queue(["Typeset",MathJax.Hub,"contenu"]);
