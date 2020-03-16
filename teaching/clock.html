@@ -5,11 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:700" rel="stylesheet">
-  <title>Pierre Perruchaud - University of Notre Dame</title>
-
-</head>
-
-<body>
+  <script>
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    h = (h>12)?(h-12):h;
+    h = (h<10)?" "+h:h;
+    m = (m<10)?"0"+m:m;
+    document.getElementById('clock').innerHTML =
+    h + ":" + m ;
+    var t = setTimeout(startTime, 500);
+    }
+  </script>
   <style type="text/css">
     html, body {
       cursor: none;
@@ -17,7 +25,7 @@
       padding: 0px;
       height: 100%;
     }
-    .centered {
+    #clock {
       position: fixed;
       font-family: 'Robota Mono';
       font-size: 500px;
@@ -27,9 +35,14 @@
       transform: translate(-50%, -50%);
     }
   </style>
+  <title>Pierre Perruchaud - University of Notre Dame</title>
+
+</head>
+
+<body onload="startTime()">
 
   <div class="win">
-    <span class="centered">Test </span>
+    <span class="centered" id="clock">Test </span>
   </div>
 </body>
 </html>
