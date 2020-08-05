@@ -1,10 +1,15 @@
-const ur1 = "univ-rennes1.fr"
-const nd = "nd.edu"
+const domainIDs = { ur1: "univ-rennes1.fr", nd: "nd.edu" }
+const emailPPC = {
+  nom: "Pierre Perruchaud",
+  id: "pper"+"ruch",
+  domaineID: "nd"
+  }
 
 var logo = ""
 
-function emailfromdata(nom,adresse,domaine){
-  return nom + " <" + adresse + "@" + domaine + ">";
+function emailfromdata(data,complete=true){
+  const href = data.id + "@" + ("domaineID" in data ? domainIDs[data["domaineID"]] : data["domain"])
+  return ("nom" in data) && complete ? data.nom + " <" + href + ">" : href;
   }
 
 function changerInfo(texte){
@@ -15,6 +20,15 @@ function changerInfo(texte){
   }
 
 $(document).ready(function(){
+  $("a.email").each(function(i,e){
+    const data = JSON.parse(e.getAttribute("data"));
+    e.removeAttribute("data");
+    e.setAttribute("href","mailto:"+emailfromdata(data));
+    address = emailfromdata(data,complete=false);
+    const label = data.label.replace(/\$a/g,address).replace(/\$n/g,data.nom).replace(/\$i/g,data.id);
+    e.innerHTML = label;
+    });
+  
   $(".adresse").mouseenter(function(){
     changerInfo("Pierre Perruchaud<br>\
                  Office: Hayes-Healy 202<br>\
@@ -26,10 +40,10 @@ $(document).ready(function(){
     });
   
   $(".mail").mouseenter(function(){
-    changerInfo("p"+"perruch"+"@"+nd);
+    changerInfo(emailfromdata(emailPPC,false));
     });
   $(".mail").click(function(){
-    window.location.href = "mailto:" + emailfromdata("Pierre Perruchaud","pperruch",nd);
+    window.location.href = "mailto:" + emailfromdata(emailPPC);
     });
 
   $(".telephone").mouseenter(function(){
