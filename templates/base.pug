@@ -1,0 +1,73 @@
+//- Provide:
+//-   block content
+//-   block mini-menu
+//-   var active
+//-   var illustration
+
+- tabs = [{}, {}, {}, {}]
+
+mixin tabsAppendProperty(name,values)
+  each tab,i in tabs 
+    - tab[name] = values[i]
+
++tabsAppendProperty('url', ['index', 'research', 'teaching/index', 'about'])
++tabsAppendProperty('active', [false, false, false, false])
+
+case ${language}
+  when 'en'
+    - var university = 'University of Luxembourg'
+    +tabsAppendProperty('title', ['Home', 'Research', 'Teaching', 'About'])
+  default
+    - var university = 'Université du Luxembourg'
+    +tabsAppendProperty('title', ['Accueil', 'Recherche', 'Enseignement', 'À propos'])
+
+block variables
+
+- tabs['active'] = true
+
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  title Pierre Perruchaud - ${university}
+  link(rel='stylesheet' href='bootstrap/css/bootstrap.min.css')
+  link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Raleway:800' rel='stylesheet')
+  link(href='perso.css' rel='stylesheet')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async='')
+  .container
+  header.row
+    div
+      #nom.visible-sm.visible-md.visible-lg.grand
+        a(href='index.html')  Pierre Perruchaud
+      #nom.visible-xs.petit
+        a(href='index.html')  Pierre Perruchaud
+      ul#barre.nav.nav-tabs.nav-justified
+      each tab in tabs
+        if tab['active']
+          li.nav-item.active
+            a.nav-link.onglet(href=tab['url']+'.html')  =tab['title']
+        else
+          li.nav-item
+            a.nav-link.onglet(href=tab['url']+'.html')  =tab['title']
+  section.row.corps
+    #page.col-sm-12
+      #mini-menu.col-sm-2
+        img.visible-sm.visible-md.visible-lg.img-responsive.img-circle(alt='Pierre Perruchaud' src='images/'+illustration+'.png')
+        block mini-menu
+      #contenu.col-sm-10
+        #general-info.mini-contenu.active
+          block content
+  section#footer.row
+    #logo
+      a(href='https://www.nd.edu/')
+        img(src='images/ND.svg' height='60px')
+    .col-sm-12.coord
+      .icones
+        i.glyphicon.glyphicon-rond.glyphicon-home.adresse
+        i.glyphicon.glyphicon-rond.glyphicon-envelope.mail
+        i.glyphicon.glyphicon-rond.glyphicon-earphone.telephone
+      #info
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+script(src='bootstrap/js/bootstrap.min.js')
+script(src='perso.js')

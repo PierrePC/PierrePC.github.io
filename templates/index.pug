@@ -1,0 +1,37 @@
+extends base
+
+block variables
+  - var active = 0
+  - var illustration = 'Photo'
+
+block mini-menu
+  //- No menu
+
+block content
+  case ${language}
+    when 'en'
+      p 
+        | Welcome! My name is Pierre Perruchaud, I am a postdoc at the
+        a(href='https://www.uni.lu') University of Luxembourg
+        | .
+      ul
+        li
+          | In
+          a(href="research.html") my research
+          | , I am interested in the interactions between probability and geometry, mainly through the study of stochastic processes on manifolds.
+      
+      p You can send me an email by clicking the envelope down below. My office is in MNO, E05 0525-030.
+    
+    default
+      p 
+        | Bienvenue ! Je m'appelle Pierre Perruchaud, je suis postdoctorant à l'
+        a(href='https://www.uni.lu') Université du Luxembourg
+        | .
+      ul
+        li
+          | Dans
+          a(href="research.html") ma recherche
+          | , je m'intéresse aux interactions entre probabilités et géométrie, principalement par l'étude des processus stochastiques sur les variétés.
+            
+      p Vous pouvez m'envoyer un email en cliquant l'enveloppe en bas de page. Mon bureau se trouve en MNO, E05 0525-030.
+      
