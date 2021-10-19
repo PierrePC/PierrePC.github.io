@@ -1,8 +1,8 @@
-const domainIDs = { ur1: "univ-rennes1.fr", nd: "nd.edu" }
+const domainIDs = { ur1: "univ-rennes1.fr", nd: "nd.edu", unilu: "uni.lu" }
 const emailPPC = {
   nom: "Pierre Perruchaud",
-  id: "pper"+"ruch",
-  domaineID: "nd"
+  id: "pierre.per"+"ruchaud",
+  domaineID: "unilu"
   }
 
 var logo = ""
@@ -30,13 +30,14 @@ $(document).ready(function(){
     });
   
   $(".adresse").mouseenter(function(){
-    changerInfo("Pierre Perruchaud<br>\
-                 Office: Hayes-Healy 202<br>\
-                 Mail: 255 Hurley Building<br>\
-                 Notre Dame, IN 46556-4618");
+    changerInfo("Office: MNO, E05 0525-030<br>\
+                 Mail: Université du Luxembourg<br>\
+                 Maison du Nombre<br>\
+                 6, Avenue de la Fonte<br>\
+                 L-4364 Esch-sur-Alzette");
     });
   $(".adresse").click(function(){
-    alert("Pierre Perruchaud\nOffice: Hayes-Healy 202\nMail: 255 Hurley Building\nNotre Dame, IN 46556-4618");
+    alert("Pierre Perruchaud\nOffice: MNO, E05 0525-030\nMail: Université du Luxembourg\nMaison du Nombre\n6, Avenue de la Fonte\nL-4364 Esch-sur-Alzette\nLuxembourg");
     });
   
   $(".mail").mouseenter(function(){
@@ -47,10 +48,10 @@ $(document).ready(function(){
     });
 
   $(".telephone").mouseenter(function(){
-    changerInfo("+1 (574) 631-6438");
+    changerInfo("(+352) 46 66 44 5412");
     });
   $(".telephone").click(function(){
-    alert("+1 (574) 631-6438");
+    alert("(+352) 46 66 44 5412");
     });
   
   $(".glyphicon-rond").mouseleave(function(){
