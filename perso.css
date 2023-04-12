@@ -94,7 +94,7 @@ color: #202020;
 text-decoration: none;
 }
 
-.mini-onglet.active
+.mini-onglet.current
 {
 color: #202020;
 }
@@ -139,6 +139,24 @@ font-weight: 700;
 #page p
 {
 text-indent:30px;
+}
+
+.cv-table
+{
+display: flex;
+margin: 0px 0px 30px;
+}
+
+.cv-table > .cv-label
+{
+width: 3em;
+writing-mode: sideways-lr;
+text-align: center;
+}
+
+.cv-table dl
+{
+margin: 0px;
 }
 
 #logo

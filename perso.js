@@ -58,5 +58,9 @@ $(document).ready(function(){
     changerInfo(logo);
     });
   
+  $(".mini-onglet").each(function(){
+    // $(this).collapse();
+    });
+  
   MathJax.Hub.Queue(["Typeset",MathJax.Hub,"contenu"]);
  });
