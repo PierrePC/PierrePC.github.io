@@ -150,13 +150,34 @@ margin: 0px 0px 30px;
 .cv-table > .cv-label
 {
 width: 3em;
-writing-mode: sideways-lr;
+writing-mode: vertical-rl;
+transform: rotate(-180deg);
 text-align: center;
 }
 
 .cv-table dl
 {
 margin: 0px;
+}
+
+@font-face {
+font-family: NotoColorEmojiLimited;
+unicode-range: U+1F1E6-1F1FF;
+src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf);
+}
+
+i.FRflag:before
+{
+font-family: NotoColorEmojiLimited;
+font-style: normal;
+content: '🇫🇷';
+}
+
+i.GBflag:before
+{
+font-family: NotoColorEmojiLimited;
+font-style: normal;
+content: '🇬🇧';
 }
 
 #logo
