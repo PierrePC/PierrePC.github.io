@@ -138,7 +138,13 @@ font-weight: 700;
 
 #page p
 {
-text-indent:30px;
+text-indent:2em;
+}
+
+#page p.references
+{
+text-indent: 0px;
+padding-left: 2em;
 }
 
 .cv-table
