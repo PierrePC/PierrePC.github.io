@@ -147,6 +147,16 @@ text-indent: 0px;
 padding-left: 2em;
 }
 
+.talk .speaker
+{
+font-weight: 700;
+}
+
+#page .talk p
+{
+text-indent: 0px;
+}
+
 .cv-table
 {
 display: flex;
