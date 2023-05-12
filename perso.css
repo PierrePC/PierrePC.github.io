@@ -199,16 +199,18 @@ src: url(https://raw.githack.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoj
 
 i.FRflag:before
 {
-font-family: NotoColorEmojiLimited;
 font-style: normal;
-content: '🇫🇷';
+font-size: 12px;
+font-variant: small-caps;
+content: 'FR';
 }
 
 i.GBflag:before
 {
-font-family: NotoColorEmojiLimited;
 font-style: normal;
-content: '🇬🇧';
+font-size: 12px;
+font-variant: small-caps;
+content: 'EN';
 }
 
 #logo
