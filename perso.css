@@ -152,7 +152,13 @@ padding-left: 2em;
 font-weight: 700;
 }
 
-#page .talk p
+#page .mini-contenu.liste p
+{
+text-indent: 0px;
+margin: 0px;
+}
+
+#page .no p
 {
 text-indent: 0px;
 }
