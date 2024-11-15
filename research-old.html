@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700|Raleway:800" rel="stylesheet">
     <link href="perso.css" rel="stylesheet">
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,15 +49,6 @@
 </div>
 
 <div class="col-sm-10" id="contenu">
-
-  <div class="mini-contenu" id="overview">
-    <h3> Overview </h3>
-
-    <p> The central objects of my research are stochastic processes on manifolds and geometric function spaces. Behind this terminology, one will find for instance constructive quantum field theory, random matrix theory or fluid mechanics, when the base space is respectively a vector space of sections, a Lie group, or a group of diffeomorphism. In this approach, I find myself using mainly tools from stochastic calculus and differential topology. </p>
-
-    <p> <em>Keywords:</em> Stochastic processes, rough path theory, Malliavin calculus, differential topology, Riemannian geometry. </p>
-  </div>
-
   <div class="mini-contenu liste" id="publications">
   <h3>List of publications</h3>
   
@@ -88,28 +79,54 @@
   </ul>
   </div>
 
-  <div class="mini-contenu" id="gaugetheory">
-    <h3> Gauge theory from the point of view of Brownian loops </h3>
+  <div class="mini-contenu" id="kinetic">
+    <h3> Kinetic motions </h3>
 
-    <p> In our context, a gauge theory is a random pair \((\phi,\nabla)\) of a field and a connection. The physical models predict how those two objects should influence each other, however we do not have a satisfying formalism for the probability distribution. One stepping stone would be to understand the distribution of \(\phi\) conditionally to \(\nabla\), a direction considered by many authors. Our aim is to rewrite some of the physical observables associated to the conditioned distribution in terms of holonomies of loops, in such a way that the dependence on \(\nabla\) becomes tractable. </p>
-      
-    <p> [<a href="docs/Eindhoven2024.pdf">Slides</a>] The slides from a talk given in Eindhoven in September 2024. </p>
+    <p> In this context, kinetic motions are continuous random processes \((x_t)_{t\geq0}\) whose velocity is well-defined, and such that \((x_t,\dot x_t)_{t\geq0}\) is a Markovian process. A well-know example is the Langevin process, where \(\dot x_t\) is a Brownian motion (possibly with friction) and \(x_t\) is defined as its integral. In this case \(x_t\) takes values in a Euclidean space, but kinetic random motions exist in general manifolds, and this is the case I am mainly interested in.  </p>
+    <p> Such motions exhibit behaviour halfway from deterministic and Brownian. Indeed, if the randomness is very small in the definition of \(\dot x_t\), then \(x_t\) will be very close to the integral of a deterministic object. On the other hand, if \(\dot x_t\) is very unpredictable, then the increments of \(x_t\) will be almost independent in some sense, and we expect it to be close to a Brownian motion. </p>
+    <p> In suitable conditions, namely in the presence of sufficient symmetry and ergodicity, I have proved <a href="https://doi.org/10.1214/20-EJP439">[20]</a> that there is indeed convergence of the process to a Brownian motion. The approach follows the idea, introduced in an earlier paper of J. Angst, I. Bailleul and C. Tardif <a href="https://arxiv.org/abs/1501.03679">[ABT]</a>, of using rough path techniques to prove such homogenisation results, and adds some arguments from ergodic theory. </p>
+
+    <p class="references">[20] <em><a href="https://doi.org/10.1214/20-EJP439">Homogenisation for anisotropic kinetic random motions</a>,</em> Electronic Journal of Probability, 2020. </p>
   </div>
 
-  <div class="mini-contenu" id="browniannodalsubmanifolds">
-    <h3> Differential topology of dynamical random fields </h3>
+  <div class="mini-contenu" id="diffeo">
+    <h3> Groups of diffeomorphisms </h3>
 
-    <p> For the purpose of this paragraph, a dynamical random field is a time-dependent map \(f:(t,x)\mapsto f_t(x)\) on some smooth base space \(M\) that behaves smoothly as a function of \(x\), but can be much more chaotic, say Brownian, with respect to \(t\). To this field, we can associate geometric objects; for instance, if \(f\) takes values in \(\mathbb R^k\), then the zero set of \(x\mapsto f_t(x)\) is most often a smooth submanifold of codimension \(k\). However, under reasonable conditions, one can show that there exists a set of exceptional times \(t\) where this set is singular, and we can describe its local geometry. Similar results hold for other geometric objects, for instance the image of a map from the circle to \(\mathbb R^3\) (a dynamical knot). </p>
+    <p> It is a fundamental (and beautiful) remark of Arnol'd <a href="https://doi.org/10.5802/aif.233">[Arnold]</a> that the Euler equations of fluid mechanics (for an inviscid incompressible fluid) can be written as a geodesic equation in diffeomorphism groups, provided we choose a suitable Riemannian metric. When dealing with finite-dimensional manifolds, the geodesic motion is a particular case of a kinetic motion where the velocity \(\dot x_t\) is but a constant (one should say up to parallel transport); hence, we want consider fluid dynamics as a particular case of a kinetic motion, with values in an infinite-dimensional manifold. </p>
 
-    <p> [<a href="docs/Nancy2024.pdf">Slides</a>] The slides from a talk given in Nancy in September 2024. </p>
+    <p> Random kinetic motions with values in this group can be seen in a sense as random kinetic fluids. Following the tools of nonlinear global analysis developed by D. Ebin and J. Marsden <a href="https://projecteuclid.org/euclid.bams/1183530815">[Ebin-Marsden]</a>, my advisors and myself proved that a particular kinetic motion converges in the small noise limit to the geodesic motion, and to some Brownian-like motion in the high noise limit <a href="https://arxiv.org/abs/1905.04103">[ABP]</a>. The strategy of proof is similar to the finite-dimensional one, but the individual arguments require more sophisticated tools from martingale differences to infinite-dimensional geometry. </p>
+
+    <p class="references">[ABP] <em><a href="https://arxiv.org/abs/1905.04103">Kinetic Brownian motion on the diffeomorphism group of a closed Riemannian manifold</a>,</em> with J. Angst and I. Bailleul, to appear in Annali della Scuola Normale Superiore di Pisa, 2019. </p>
   </div>
 
-  <!-- <div class="mini-contenu" id="other">
-    <h3> Other interests </h3>
+  <div class="mini-contenu" id="nodal">
+    <h3> Random nodal sets </h3>
 
-    <p> [Link or collapsibles] </p>
-  </div> -->
+    <p> Very roughly, the Chern-Gauss-Bonnet theorem is a formula connecting two seemingly unrelated quantities. The first is some global topological information \(e(E)\) about a vector bundle \(E\) over a manifold \(M\); the second is a notion of curvature \(e_\nabla\) in terms of local metric data, say a notion of transport \(\nabla\). For the reader familiar with algebraic topology, the formula reads \([e_\nabla]\frown[M]=e(E)\); in practice, it means that \(e(E)\) can be deduced from \(e_\nabla\), and reciprocally that constrains on \(\nabla\) imposes constrains on \(e(E)\). Index theory, a fast generalization of this formula, is inarguably a major achievement of twentieth century geometry. </p>
+    
+    <p> Recently, it has become clear that a Gaussian field on a manifold \(M\), i.e. a random section of a bundle \(E\), gives rise to metric objects such as \(\nabla\), and that results such as the Chern-Gauss-Bonnet can be recovered from probabilistic arguments. In short, a fixed realization of the field gives access to the topological part \(e(E)\), while the law of the field (i.e. its expectation and covariance) gives access to the metric part \(e_\nabla\). The connection between these two quantities is found through taking expectation. </p>
 
+    <p> With <a href="https://michelestecconi.wordpress.com/">Michele Stecconi</a>, we are considering the case of a Brownian motion of sections, which in some sense bridges the gap between a fixed realization and the fully random situation. More precisely, we are trying to understand the almost sure behaviour of the system, before taking expectations. </p>
+  </div>
+
+  <div class="mini-contenu" id="hypoelliptic">
+    <h3> Hypoelliptic diffusions </h3>
+    
+    <p> By definition, unlike Brownian motion, the generator of a kinetic diffusion is never elliptic. If the motion is sufficiently well-behaved, one can hope that it be hypoelliptic. For instance, it is true for the so-called kinetic Brownian motion (also called the circular Langevin process, the velocity spherical Brownian motion...), where the velocity \(\dot x_t\) (up to parallel transport) is a Brownian motion on the unit tangent sphere. In this case, given a deterministic initial condition \((x_0,\dot x_0)\), the variable \((x_t,\dot x_t)\) has a smooth density for all \(t>0\). </p>
+    <p> The small time asymptotics of hypoelliptic diffusions are not well understood, although we expect it to depend on the curvature of the underlying manifold, the geometry of certain spaces of Lie brackets. With the help of <a href="https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kolokoltsov/">Vassili Kolokoltsov</a>, I have worked on the small time asymptotics of kinetic Brownian motion. In <a href="https://arxiv.org/abs/2301.06904">[23]</a>, I proved that its behaviour is close to a particular second order approximation, in a precise sense given by some Duhamel expansion. In the very last section of my PhD dissertation <a href="docs/These.pdf">[Thesis]</a>, I explore another approach to the same problem, using techniques inspired by the WKB method. </p>
+
+    <p class="references"> [23] <em><a href="https://arxiv.org/abs/2301.06904">Small time expansion for a strictly hypoelliptic kernel</a>,</em> 2023. <br>
+    [Thesis] <em><a href="docs/These.pdf">Homogénéisation pour le mouvement brownien cinétique</a>,</em> 2019. Advisors: J. Angst, I. Bailleul. </p>
+  </div>
+
+  <div class="mini-contenu" id="other">
+    <h3> Other </h3>
+    
+    <p> Consider a standard Brownian motion in the space of \(d\times d\) Hermitian matrices. These matrices are diagonalizable, and the process of their eigenvalues is known as Dyson Brownian motion. Perhaps surprisingly, from symmetry considerations we see that Dyson Brownian motion is Markovian; in other words, the position of the eigenspaces has no influence on the dynamics of the eigenvalues. </p>
+    <p> In <a href="https://doi.org/10.1214/22-ECP480">[22]</a>, I considered the case of kinetic Brownian motion in the same space, and wrote explicitly how the eigenspaces and eigenvalues interact in this context. From these considerations, it turns out that kinetic Dyson Brownian motion (the process of the eigenvalues) is not Markovian in dimension higher than 3. </p>
+
+    <p class="references"> [22] <em><a href="https://doi.org/10.1214/22-ECP480">Kinetic Dyson Brownian motion</a>,</em> Electronic Communications in Probability, 2022. <br> </p>
+  </div>
 </div>
       </div>
     </section>
