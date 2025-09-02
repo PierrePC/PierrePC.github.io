@@ -1,8 +1,8 @@
 const domainIDs = { ur1: "univ-rennes1.fr", nd: "nd.edu", unilu: "uni.lu" }
 const emailPPC = {
   nom: "Pierre Perruchaud",
-  id: "pierre.per"+"ruchaud",
-  domaineID: "unilu"
+  id: "ryn116"+"ovh3",
+  domain: "qzueos.com"
   }
 
 var logo = ""
@@ -28,7 +28,7 @@ $(document).ready(function(){
     const label = data.label.replace(/\$a/g,address).replace(/\$n/g,data.nom).replace(/\$i/g,data.id);
     e.innerHTML = label;
     });
-  
+  /*
   $(".adresse").mouseenter(function(){
     changerInfo("Office: MNO, E05 0525-030<br>\
                  Mail: Université du Luxembourg<br>\
@@ -39,20 +39,23 @@ $(document).ready(function(){
   $(".adresse").click(function(){
     alert("Pierre Perruchaud\nOffice: MNO, E05 0525-030\nMail: Université du Luxembourg\nMaison du Nombre\n6, Avenue de la Fonte\nL-4364 Esch-sur-Alzette\nLuxembourg");
     });
+  */
   
   $(".mail").mouseenter(function(){
-    changerInfo(emailfromdata(emailPPC,false));
+    changerInfo("<p class='text-center'>" + emailfromdata(emailPPC,false) + "<br>(Please excuse the secured temporary address)</p>");
     });
   $(".mail").click(function(){
     window.location.href = "mailto:" + emailfromdata(emailPPC);
     });
 
+  /*
   $(".telephone").mouseenter(function(){
     changerInfo("(+352) 46 66 44 5412");
     });
   $(".telephone").click(function(){
     alert("(+352) 46 66 44 5412");
     });
+  */
   
   $(".glyphicon-rond").mouseleave(function(){
     changerInfo(logo);
