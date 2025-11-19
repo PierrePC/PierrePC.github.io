@@ -1,14 +1,14 @@
-const domainIDs = { ur1: "univ-rennes1.fr", nd: "nd.edu", unilu: "uni.lu" }
+const domainIDs = { ur1: "univ-rennes1.fr", nd: "nd.edu", unilu: "uni.lu", Monash: "monash.edu" }
 const emailPPC = {
   nom: "Pierre Perruchaud",
-  id: "ryn116"+"ovh3",
-  domain: "qzueos.com"
+  id: "pierre.per"+"ruchaud",
+  domainID: "Monash"
   }
 
 var logo = ""
 
 function emailfromdata(data,complete=true){
-  const href = data.id + "@" + ("domaineID" in data ? domainIDs[data["domaineID"]] : data["domain"])
+  const href = data.id + "@" + ("domainID" in data ? domainIDs[data["domainID"]] : data["domain"])
   return ("nom" in data) && complete ? data.nom + " <" + href + ">" : href;
   }
 
@@ -28,21 +28,20 @@ $(document).ready(function(){
     const label = data.label.replace(/\$a/g,address).replace(/\$n/g,data.nom).replace(/\$i/g,data.id);
     e.innerHTML = label;
     });
-  /*
+  
   $(".adresse").mouseenter(function(){
-    changerInfo("Office: MNO, E05 0525-030<br>\
-                 Mail: Université du Luxembourg<br>\
-                 Maison du Nombre<br>\
-                 6, Avenue de la Fonte<br>\
-                 L-4364 Esch-sur-Alzette");
+    changerInfo("Office: Room 452, level 4, School of Mathematics<br>\
+                 Mail: Monash University<br>\
+                 Room 452<br>\
+                 9 Rainforest Walk<br>\
+                 Clayton Campus, VIC 3800");
     });
   $(".adresse").click(function(){
-    alert("Pierre Perruchaud\nOffice: MNO, E05 0525-030\nMail: Université du Luxembourg\nMaison du Nombre\n6, Avenue de la Fonte\nL-4364 Esch-sur-Alzette\nLuxembourg");
+    alert("Pierre Perruchaud\nOffice: Room 452, level 4, School of Mathematics\nMail: Monash University\nRoom 452\n9 Rainforest Walk\nClayton Campus, VIC 3800");
     });
-  */
   
   $(".mail").mouseenter(function(){
-    changerInfo("<p class='text-center'>" + emailfromdata(emailPPC,false) + "<br>(Please excuse the secured temporary address)</p>");
+    changerInfo("<p class='text-center'>" + emailfromdata(emailPPC,false) + "</p>");
     });
   $(".mail").click(function(){
     window.location.href = "mailto:" + emailfromdata(emailPPC);
