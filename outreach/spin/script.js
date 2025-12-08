@@ -62,7 +62,7 @@ window.addEventListener("load", (event) => {
   
   interface.canvas.onfullscreenchange = function () {
     if (!document.fullscreenElement) {
-      interface.resize(600, 600);
+      interface.resize(window.innerWidth, window.innerHeight);
       interface.redraw();
     }
   };
@@ -110,16 +110,17 @@ window.addEventListener("load", (event) => {
         break;
       case "inflating":
         I.howInflated += 1000 / (I.expectedFPS * I.inflatingTime);
-        if (I.howInflated > 1) {
-          I.howInflated = 0;
-          I.state = "flashing";
-        }
         
         {
           const e = I.easer(I.howInflated, 2);
           A.backgroundRadius = 5 * e;
           A.spinNoise = normal.inexpensiveTangentSpin(I.inflatingStD * 2 * e).exponential();
           A.spinNoise = A.spinNoise.sMul(Math.exp(2 * I.inflatingLogRatio * e));
+        }
+        
+        if (I.howInflated > 1) {
+          I.howInflated = 0;
+          I.state = "flashing";
         }
         
         // howInflated goes up
@@ -128,11 +129,6 @@ window.addEventListener("load", (event) => {
         break;
       case "deflating":
         I.howInflated -= 1000/ (I.expectedFPS * I.inflatingTime);
-        if (I.howInflated < 0) {
-          I.howInflated = 0;
-          I.state = "idle";
-          A.spinNoise = new Spin(1, 0, 0, 0);
-        }
         
         {
           const e = I.easer(I.howInflated, 2);
@@ -141,6 +137,12 @@ window.addEventListener("load", (event) => {
           A.spinNoise = A.spinNoise.sMul(Math.exp(2 * I.inflatingLogRatio * e));
         }
 
+        if (I.howInflated < 0) {
+          I.howInflated = 0;
+          I.state = "idle";
+          A.spinNoise = new Spin(1, 0, 0, 0);
+        }
+        
         // howInflated goes down
         // spinNoise is updated
         // backgroundOpacity and backgroundRadius are updated
@@ -148,23 +150,25 @@ window.addEventListener("load", (event) => {
         break;
       case "flashing":
         I.howFlashed += 1000 / (I.expectedFPS * I.flashingTime);
-        if (I.howFlashed > 1) {
-          I.howFlashed = 0;
-          I.state = "idle";
-          A.spinNoise = new Spin(1, 0, 0, 0);
-          A.spin = A.spin.sMul(-1);
-          A.backgroundOpacity = 1;
-          A.backgroundRadius = 0;
-        }
         
         {
           const e = I.easer(1 - I.howFlashed, 2);
           A.backgroundOpacity = I.easer(1 - I.howFlashed);
           A.spinNoise = normal.inexpensiveTangentSpin(I.flashingStD * 2 * e).exponential();
           
-          if (Math.floor(2 * I.howFlashed * I.flashingFrequency) & 1 === 1) {
+          if ((Math.floor(2 * I.howFlashed * I.flashingFrequency) & 1) === 0) {
+
             A.spinNoise = A.spinNoise.sMul(-1);
           }
+        }
+
+        if (I.howFlashed > 1) {
+          I.howFlashed = 0;
+          I.state = "idle";
+          A.spinNoise = new Spin(1, 0, 0, 0);
+          A.spin = A.spin.sMul(-1).sanitize();
+          A.backgroundOpacity = 1;
+          A.backgroundRadius = 0;
         }
         
         // howFlashed goes up
@@ -244,7 +248,6 @@ window.addEventListener("load", (event) => {
       C.lineTo(x0 - 0.05 * s, y0 + 0.02 * s);
       C.stroke();
     }
-    // TO DO
   }
   
   interface.screenArea = function (x, y) {
@@ -299,6 +302,8 @@ window.addEventListener("load", (event) => {
         this.state = "deflating";
         break;
     }
+    
+    this.artist.spin.sanitize();
   };
   
   interface.onMove = function (x, y) {
